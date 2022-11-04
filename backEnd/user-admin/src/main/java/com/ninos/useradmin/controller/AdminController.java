@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @RequestMapping("/find-admin")
-    public String getAdmin(){
-        return "this is admin";
-    }
+    public String getAdmin(){return "this is admin";}
 
 
 }
