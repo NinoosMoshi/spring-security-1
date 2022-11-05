@@ -1,6 +1,7 @@
 package com.ninos.useradmin.security.config;
 
 import com.ninos.useradmin.security.dao.UserRepository;
+import com.ninos.useradmin.security.jwt.filter.JwtAuthorizationFilter;
 import com.ninos.useradmin.security.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -35,12 +36,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .anyRequest().authenticated();
     }
 
 
