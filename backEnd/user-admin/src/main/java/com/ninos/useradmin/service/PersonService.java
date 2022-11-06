@@ -1,14 +1,13 @@
 package com.ninos.useradmin.service;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+
+import com.ninos.useradmin.entity.Person;
+
+import java.util.List;
 
 public interface PersonService {
 
-//    @PreAuthorize("hasAuthority('user')")
-    String getPersonUser();
-
-//    @PreAuthorize("hasAuthority('admin')")
-    String getPersonAdmin();
+  List<Person> getPersons();
 
 
 }
