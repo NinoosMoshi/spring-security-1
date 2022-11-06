@@ -24,15 +24,15 @@ public class DBtest  {  //implements CommandLineRunner
 //        this.roleRepository = roleRepository;
 //        this.passwordEncoder = passwordEncoder;
 //    }
-
+//
 //    @Override
 //    public void run(String... args) throws Exception {
 //        User user = new User();
-//        user.setEmail("ninos@gmail.com");
-//        user.setPassword(passwordEncoder.encode("12345"));
+//        user.setEmail("matthew@gmail.com");
+//        user.setPassword(passwordEncoder.encode("333"));
 //        user.setActive(1);
 //        List<Role> authorities = roleRepository.findAll();
-//        user.getRoles().add(authorities.get(0));
+//        user.getRoles().add(authorities.get(1));
 //        userRepository.save(user);
 //    }
 

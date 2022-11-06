@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/admin")
 public class AdminController {
 
+
     @RequestMapping("/find-admin")
     public String getAdmin(){return "this is admin";}
 
