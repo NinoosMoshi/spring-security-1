@@ -11,12 +11,32 @@ import { SpaceValidator } from 'src/app/model/SpaceValidator';
 })
 export class LoginComponent implements OnInit {
 
+  formParentGroup: FormGroup
 
-  constructor() { }
+  constructor(private formChildGroup: FormBuilder) { }
 
   ngOnInit(): void {
+    this.myLoginForm();
+  }
+
+  myLoginForm(){
+     this.formParentGroup = this.formChildGroup.group({
+      user: this.formChildGroup.group({
+        email:[],
+        password:[]
+      })
+
+     })
+  }
+
+
+  login(){
+    alert(this.formParentGroup.controls['user'].value.email);
+    alert(this.formParentGroup.controls['user'].value.password);
 
   }
+
+
 
 
 
