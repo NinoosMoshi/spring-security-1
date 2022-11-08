@@ -10,15 +10,30 @@ import { SpaceValidator } from 'src/app/model/SpaceValidator';
 })
 export class RegisterComponent implements OnInit {
 
+  formParentGroup : FormGroup;
 
-  constructor() { }
+
+  constructor(private formChildGroup: FormBuilder) { }
 
   ngOnInit(): void {
+    this.mySignupForm();
+  }
 
+  mySignupForm(){
+    this.formParentGroup = this.formChildGroup.group({
+      user: this.formChildGroup.group({
+        email:[],
+        password:[]
+      })
+
+     })
   }
 
 
-
+  signup(){
+    alert(this.formParentGroup.controls['user'].value.email);
+    alert(this.formParentGroup.controls['user'].value.password);
+  }
 
 
 }

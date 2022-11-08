@@ -4,7 +4,7 @@
        <h1 class="card-title text-center">Register</h1>
        <div class="card-text">
 
-         <form>
+         <form (ngSubmit)="signup()" [formGroup]="formParentGroup">
           <div formGroupName="user">
            <div class="form-group">
              <label for="exampleInputEmail1">Email Address</label>
