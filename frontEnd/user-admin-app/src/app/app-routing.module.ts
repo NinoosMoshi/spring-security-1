@@ -1,3 +1,4 @@
+import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent}
+  {path:'register', component:RegisterComponent},
+  {path:'product', component:ProductComponent}
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../services/security/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
 
   formParentGroup: FormGroup
 
-  constructor(private formChildGroup: FormBuilder) { }
+  constructor(private formChildGroup: FormBuilder,
+              private authenticationService:AuthenticationService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.myLoginForm();
@@ -31,8 +34,19 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    alert(this.formParentGroup.controls['user'].value.email);
-    alert(this.formParentGroup.controls['user'].value.password);
+    this.authenticationService.executeAuthentication(
+      this.formParentGroup.controls['user'].value.email,
+      this.formParentGroup.controls['user'].value.password
+    ).subscribe({
+      next:response =>{
+        // console.log(response.roles[0].roleName);
+       this.router.navigateByUrl("/product");
+      },
+      error:err =>{
+        alert("Invalid Credentails")
+      }
+    })
+
 
   }
 
