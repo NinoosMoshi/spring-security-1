@@ -9,13 +9,15 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './components/product/product.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent
+    ProductComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
