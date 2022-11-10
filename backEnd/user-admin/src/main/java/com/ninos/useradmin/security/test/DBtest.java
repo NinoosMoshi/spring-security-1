@@ -12,27 +12,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DBtest  {  //implements CommandLineRunner
+public class DBtest  {  // implements CommandLineRunner
 
-//    private UserRepository userRepository;
-//    private RoleRepository roleRepository;
-//    private PasswordEncoder passwordEncoder;
-//
-//    @Autowired
-//    public DBtest(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-//        this.userRepository = userRepository;
-//        this.roleRepository = roleRepository;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-//
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public DBtest(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
 //    @Override
 //    public void run(String... args) throws Exception {
 //        User user = new User();
-//        user.setEmail("matthew@gmail.com");
-//        user.setPassword(passwordEncoder.encode("333"));
+//        user.setEmail("daniel@gmail.com");
+//        user.setPassword(passwordEncoder.encode("444"));
 //        user.setActive(1);
 //        List<Role> authorities = roleRepository.findAll();
-//        user.getRoles().add(authorities.get(1));
+//        user.getRoles().add(authorities.get(0));
 //        userRepository.save(user);
 //    }
 
@@ -43,7 +43,7 @@ public class DBtest  {  //implements CommandLineRunner
 //        user.setPassword(passwordEncoder.encode("22222"));
 //        user.setActive(1);
 //        List<Role> authorities = roleRepository.findAll();
-//        user.getRoles().add(authorities.get(0));
+////        user.getRoles().add(authorities.get(0));
 //        user.getRoles().add(authorities.get(1));
 //        userRepository.save(user);
 //

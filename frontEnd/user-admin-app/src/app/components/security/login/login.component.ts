@@ -39,8 +39,14 @@ export class LoginComponent implements OnInit {
       this.formParentGroup.controls['user'].value.password
     ).subscribe({
       next:response =>{
-        // console.log(response.roles[0].roleName);
-       this.router.navigateByUrl("/product");
+        const tempRole = response.roles[0].roleName;
+        if(tempRole === 'admin'){
+          this.router.navigateByUrl("/admin");
+        }else{
+          this.router.navigateByUrl("/user");
+        }
+
+
       },
       error:err =>{
         alert("Invalid Credentails")

@@ -19,6 +19,7 @@ public class PersonController {
     private final PersonService personService;
 
 
+    // @PreAuthorize("hasAuthority('one') and hasAuthority('two') and ...")
     @PreAuthorize("hasAuthority('user')")
     @GetMapping("/all")
     public List<Person> getAllPersons(){
