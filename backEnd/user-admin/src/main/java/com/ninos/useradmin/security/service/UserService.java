@@ -16,10 +16,19 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
 
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findUserByEmail(email);
         UserPrincipal userPrincipal = new UserPrincipal(user);
         return userPrincipal;
     }
+
+    public void addUser(User user){
+        userRepository.save(user);
+    }
+
+
+
+
 }
