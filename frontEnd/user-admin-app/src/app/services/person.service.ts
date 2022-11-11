@@ -15,11 +15,19 @@ export class PersonService {
   constructor(private http:HttpClient) { }
 
 
+  // getPersons():Observable<Person[]>{
+  //   let head = new HttpHeaders({
+  //     Authorization: sessionStorage.getItem("token").toString()
+  //   });
+  //  return this.http.get<Person[]>(`${this.baseUrl}/all`, {headers:head}).pipe(
+  //   map(response => {
+  //     return response
+  //   })
+  //  );
+  // }
+
   getPersons():Observable<Person[]>{
-    let head = new HttpHeaders({
-      Authorization: sessionStorage.getItem("token").toString()
-    });
-   return this.http.get<Person[]>(`${this.baseUrl}/all`, {headers:head}).pipe(
+   return this.http.get<Person[]>(`${this.baseUrl}/all`).pipe(
     map(response => {
       return response
     })

@@ -13,8 +13,9 @@ export class AuthenticationService {
   constructor(private http:HttpClient) { }
 
 
-    // http://localhost:8080/login
-    executeAuthentication(email:string, password:string):Observable<any>{
+
+     // http://localhost:8080/login
+     executeAuthentication(email:string, password:string):Observable<any>{
       return this.http.post<any>(`${this.baseUrl}/login`,{email,password}).pipe(
         map(response =>{
           sessionStorage.setItem("email", response.email);
@@ -33,6 +34,19 @@ export class AuthenticationService {
         })
       );
     }
+
+
+    getEmail(){
+      return sessionStorage.getItem("email");
+    }
+
+    getToken(){
+        return sessionStorage.getItem("token")
+    }
+
+    isLogin(){
+      return !(sessionStorage.getItem('email') == null || sessionStorage.getItem('token') == null);
+   }
 
 
 
