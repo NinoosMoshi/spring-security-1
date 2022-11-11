@@ -8,22 +8,22 @@ import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductComponent } from './components/product/product.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { PersonComponent } from './components/person/person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent,
     NavbarComponent,
     UserComponent,
     AdminComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

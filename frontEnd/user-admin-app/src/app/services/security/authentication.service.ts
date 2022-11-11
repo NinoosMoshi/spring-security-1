@@ -17,6 +17,8 @@ export class AuthenticationService {
     executeAuthentication(email:string, password:string):Observable<any>{
       return this.http.post<any>(`${this.baseUrl}/login`,{email,password}).pipe(
         map(response =>{
+          sessionStorage.setItem("email", response.email);
+          sessionStorage.setItem("token",`Bearer ${response.token}`);
           return response
         })
       );

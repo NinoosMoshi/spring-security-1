@@ -3,7 +3,6 @@ package com.ninos.useradmin.controller;
 import com.ninos.useradmin.entity.Person;
 import com.ninos.useradmin.service.PersonService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
