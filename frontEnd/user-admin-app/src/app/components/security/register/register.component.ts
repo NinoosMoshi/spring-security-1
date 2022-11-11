@@ -25,11 +25,21 @@ export class RegisterComponent implements OnInit {
   mySignupForm(){
     this.formParentGroup = this.formChildGroup.group({
       user: this.formChildGroup.group({
-        email:[],
-        password:[]
+        email: new FormControl('',[Validators.required,
+                                   SpaceValidator.onlyContainSpace,
+                                   Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$') ]),
+        password: new FormControl('', [Validators.required])
       })
 
      })
+  }
+
+  get email(){
+    return this.formParentGroup.get('user.email')
+  }
+
+  get password(){
+    return this.formParentGroup.get('user.password')
   }
 
 
