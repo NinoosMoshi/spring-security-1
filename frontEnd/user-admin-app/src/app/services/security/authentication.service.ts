@@ -23,7 +23,14 @@ export class AuthenticationService {
     }
 
 
-
+    // http://localhost:8080/register
+    createUser(email:string, password:string):Observable<any>{
+      return this.http.post(`${this.baseUrl}/register`,{email,password}).pipe(
+        map(response => {
+          return response
+        })
+      );
+    }
 
 
 
