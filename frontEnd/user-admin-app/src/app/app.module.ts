@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,6 +15,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { PersonComponent } from './components/person/person.component';
 import { LoginInterceptorService } from './services/security/interceptor/login-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { LoginInterceptorService } from './services/security/interceptor/login-i
     HttpClientModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass:LoginInterceptorService, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:LoginInterceptorService, multi:true},
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
