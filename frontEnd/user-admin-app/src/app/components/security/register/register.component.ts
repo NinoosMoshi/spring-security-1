@@ -44,12 +44,21 @@ export class RegisterComponent implements OnInit {
 
 
   signup(){
+    if(this.formParentGroup.invalid){
+      this.formParentGroup.markAllAsTouched()
+      return;
+   }
+
     this.authenticationService.createUser(
       this.formParentGroup.controls['user'].value.email,
       this.formParentGroup.controls['user'].value.password
     ).subscribe({
       next:response =>{
-        this.router.navigateByUrl('/login');
+        if(response.result == 1){
+          this.router.navigateByUrl("/login")
+        }else{
+          alert("This Email is Exists")
+        };
       },
       error:err =>{
         alert('there is something wrong');

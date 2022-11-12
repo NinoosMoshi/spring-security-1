@@ -1,5 +1,6 @@
 package com.ninos.useradmin.security.controller;
 
+import com.ninos.useradmin.security.dto.AccountResponse;
 import com.ninos.useradmin.security.dto.JwtLogin;
 import com.ninos.useradmin.security.dto.LoginResponse;
 import com.ninos.useradmin.security.jwt.filter.JwtAuthenticationFilter;
@@ -28,15 +29,22 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public void register(@RequestBody JwtLogin jwtLogin){
+    public AccountResponse register(@RequestBody JwtLogin jwtLogin){
+        AccountResponse accountResponse = new AccountResponse();
+        boolean result = userService.ifEmailExists(jwtLogin.getEmail());
+        if (result){
+            accountResponse.setResult(0);
+        }else {
+            User user = new User();
+            user.setEmail(jwtLogin.getEmail());
+            user.setPassword(passwordEncoder.encode(jwtLogin.getPassword()));
+            user.setActive(1);
+            user.getRoles().add(roleService.getAllRoles().get(0));
+            userService.addUser(user);
+            accountResponse.setResult(1);
+        }
 
-        User user = new User();
-        user.setEmail(jwtLogin.getEmail());
-        user.setPassword(passwordEncoder.encode(jwtLogin.getPassword()));
-        user.setActive(1);
-        user.getRoles().add(roleService.getAllRoles().get(0));
-        userService.addUser(user);
-
+         return accountResponse;
     }
 
 

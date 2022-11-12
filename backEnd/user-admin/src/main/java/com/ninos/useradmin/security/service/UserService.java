@@ -28,7 +28,9 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-
+    public boolean ifEmailExists(String email){
+        return userRepository.existsByEmail(email);
+    }
 
 
 }

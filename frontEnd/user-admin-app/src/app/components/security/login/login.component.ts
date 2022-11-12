@@ -12,7 +12,8 @@ import { SpaceValidator } from 'src/app/model/SpaceValidator';
 })
 export class LoginComponent implements OnInit {
 
-  formParentGroup: FormGroup
+  formParentGroup: FormGroup;
+  submitted = false;
 
   constructor(private formChildGroup: FormBuilder,
               private authenticationService:AuthenticationService,
@@ -44,6 +45,14 @@ export class LoginComponent implements OnInit {
 
 
   login(){
+    this.submitted = true;
+
+        if(this.formParentGroup.invalid){
+           this.formParentGroup.markAllAsTouched()
+           return;
+        }
+
+
     this.authenticationService.executeAuthentication(
       this.formParentGroup.controls['user'].value.email,
       this.formParentGroup.controls['user'].value.password
