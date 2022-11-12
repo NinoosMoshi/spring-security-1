@@ -48,6 +48,11 @@ export class AuthenticationService {
       return !(sessionStorage.getItem('email') == null || sessionStorage.getItem('token') == null);
    }
 
+   logout(){
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('token');
+   }
+
 
 
 }
