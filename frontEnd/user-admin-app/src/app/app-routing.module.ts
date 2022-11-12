@@ -1,3 +1,4 @@
+import { RouteActiveService } from './services/security/canActive/route-active.service';
 import { PersonComponent } from './components/person/person.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -6,14 +7,17 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { LoginComponent } from './components/security/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginActiveService } from './services/security/canActive/login-active.service';
 
 const routes: Routes = [
-  {path:'person', component:PersonComponent},
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
-  {path:'user', component:UserComponent},
-  {path:'admin', component:AdminComponent},
-  {path:'forbidden', component:ForbiddenComponent}
+  {path:'login', component:LoginComponent, canActivate:[LoginActiveService]},
+  {path:'register', component:RegisterComponent, canActivate:[LoginActiveService]},
+  {path:'person', component:PersonComponent, canActivate:[RouteActiveService]},
+  {path:'user', component:UserComponent, canActivate:[RouteActiveService]},
+  {path:'admin', component:AdminComponent, canActivate:[RouteActiveService]},
+  {path:'forbidden', component:ForbiddenComponent, canActivate:[RouteActiveService]},
+  {path:"",redirectTo:"/login",pathMatch:'full'},
+  {path:'**', redirectTo:'/login',pathMatch:'full'},
 ];
 
 @NgModule({
